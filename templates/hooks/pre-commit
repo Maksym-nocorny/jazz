@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# Jazz pre-commit security & sanity gate. Fast checks on STAGED changes only — blocks the commit if
+# something risky is about to be published. Bypass intentionally with:  git commit --no-verify
+set -u
+fail=0
+warn=0
+red()  { printf '\033[31m%s\033[0m\n' "$1" >&2; }
+yel()  { printf '\033[33m%s\033[0m\n' "$1" >&2; }
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+
+# 1) Block real .env files (allow .env.example / .env.sample / .env.template).
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    *.env | *.env.* )
+      case "$f" in *.example|*.sample|*.template) ;; *) red "BLOCKED: staged secret file: $f (don't commit .env — use .env.example)"; fail=1 ;; esac ;;
+  esac
+done <<< "$staged"
+
+# 2) Block large files (>1MB) — usually a stray binary/export.
+while IFS= read -r f; do
+  [ -f "$f" ] || continue
+  sz=$(wc -c < "$f" 2>/dev/null || echo 0)
+  if [ "$sz" -gt 1048576 ]; then red "BLOCKED: large file >1MB: $f ($sz bytes)"; fail=1; fi
+done <<< "$staged"
+
+# Look only at ADDED lines in this commit.
+added=$(git diff --cached -U0 --diff-filter=ACM | grep '^+' | grep -v '^+++' || true)
+
+# 3) Block likely secrets/credentials.
+high='(-----BEGIN [A-Z ]*PRIVATE KEY-----|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|xox[baprs]-[A-Za-z0-9-]{10,})'
+generic='(api[_-]?key|secret|passwd|password|token|authorization|bearer)["'"'"' ]*[:=]["'"'"' ]*[A-Za-z0-9_\-]{16,}'
+hits=$(printf '%s\n' "$added" | grep -nEi "$high" || true)
+gen=$(printf '%s\n' "$added" | grep -nEi "$generic" | grep -vEi '(example|sample|placeholder|your[_-]|changeme|xxxx|dummy|test[_-]?key)' || true)
+if [ -n "$hits$gen" ]; then red "BLOCKED: possible secret/credential in staged changes:"; printf '%s\n' "$hits" "$gen" | grep -v '^$' | head -6 >&2; fail=1; fi
+
+# 4) Block merge-conflict markers.
+if printf '%s\n' "$added" | grep -qE '^\+(<<<<<<< |=======$|>>>>>>> )'; then red "BLOCKED: merge-conflict markers in staged changes"; fail=1; fi
+
+# 5) Block leftover debugger; warn on console.log.
+if printf '%s\n' "$added" | grep -qE '^\+.*\bdebugger\b'; then red "BLOCKED: 'debugger' statement in staged changes"; fail=1; fi
+if printf '%s\n' "$added" | grep -qE '^\+.*\bconsole\.log\('; then yel "WARNING: console.log in staged changes (remove before launch)"; warn=1; fi
+
+if [ "$fail" -ne 0 ]; then
+  red "Pre-commit gate failed. Fix the above, or bypass intentionally:  git commit --no-verify"
+  exit 1
+fi
+[ "$warn" -ne 0 ] && yel "Pre-commit gate passed with warnings."
+exit 0

@@ -27,6 +27,14 @@ and any manual steps. The tester reads this to know what URL to hit.
 - If credentials/authorization are required (e.g. a Vercel login or a service API key), **stop and
   ask the PM/client** rather than guessing — surface exactly what you need.
 
+## Pre-commit security gate
+Each project repo ships a versioned hook at `.githooks/pre-commit` (installed by `new-project`,
+`git config core.hooksPath .githooks`). Before every commit it **blocks**: staged `.env` files,
+files >1MB, likely secrets/credentials (private keys, AWS/GitHub/Slack tokens, `password=…`/`token=…`),
+merge-conflict markers, and `debugger`; it **warns** on `console.log`. Bypass intentionally with
+`git commit --no-verify` — never silently disable it for client work. Before deploy, also run
+`npm run build` and a final secrets sweep.
+
 ## Per-client repo
 Each client project is its **own private GitHub repo from the start** — `new-project` runs
 `git init` in `projects/<slug>/` and creates a private repo named `<slug>` under the account,

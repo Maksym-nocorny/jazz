@@ -30,6 +30,7 @@ acceptance criteria: it renders, the key journeys work, it's accessible, and it 
 | Skip-link / keyboard focus visible | ✅ skip-link present; focus ring via `--color-focus-ring` |
 | Mobile (390×844): nav collapses, no horizontal overflow | ✅ desktop nav hidden, scrollWidth = innerWidth (390) |
 | Motion: scroll reveals fire; `?motion=0` + reduced-motion render the final state | ✅ 24 `data-motion` els reveal on scroll, 0 stuck; `?motion=0` deterministic; 0 console errors |
+| Smooth scroll (Lenis) active and coexists with reveals | ✅ `.lenis` class active; 24/24 still reveal; skipped on reduced-motion / `?motion=0` |
 
 ## Token / anti-AI spot checks (objective)
 - `grep` of `app/` + `components/` for hardcoded hex / `rgb()` / `px` literals → **none** (Law 2 ✓).

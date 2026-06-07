@@ -32,6 +32,18 @@ live_url: <set by devops>
 
 Status values: `todo | in-progress | review | needs-revision | client-review | done | blocked | skipped`.
 
+## Triage — match the process to the size of the request
+
+Before engaging the pipeline, the **PM classifies the request** and uses only the gates it warrants —
+don't run 11 phases (or a Judge gate) for a one-line change. The PM decides the tier and how many
+specialists to involve; when unsure, size up one notch.
+
+- **Trivial (surgical):** a copy tweak, a spacing/color fix, a typo. The PM or one specialist does it
+  directly and notes it in `STATE.md`. No ticket, no full gate — but still tokens only, no hardcoded values.
+- **Single-artifact:** one section, one component, copy for one page. Route to **one** specialist →
+  Judge **that artifact** → done. No full pipeline.
+- **Multi-phase / new build:** a new site or a major redesign → run the full pipeline with all gates.
+
 ## Ticket lifecycle (one task at a time)
 
 1. **Open** a ticket from `templates/task-ticket.md` into the relevant phase folder. Fill the goal,

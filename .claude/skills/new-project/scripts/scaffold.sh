@@ -64,8 +64,16 @@ seed "HANDOFF.md"    "$DEST/HANDOFF.md"
     git config user.name "$login"
     git config user.email "$login@users.noreply.github.com"
   fi
+  # install the security pre-commit gate (versioned in .githooks; activated AFTER the init commit so
+  # committing the hook itself isn't blocked by its own secret-pattern matches).
+  if [ -f "$ROOT/templates/hooks/pre-commit" ]; then
+    mkdir -p .githooks
+    cp "$ROOT/templates/hooks/pre-commit" .githooks/pre-commit
+    chmod +x .githooks/pre-commit
+  fi
   git add -A
   git commit -qm "Init: $NAME — Jazz project workspace" >/dev/null 2>&1
+  [ -f .githooks/pre-commit ] && git config core.hooksPath .githooks
   if [ "${JAZZ_NO_REMOTE:-}" != "1" ] && command -v gh >/dev/null 2>&1; then
     if gh repo create "$SLUG" --private --source . --remote origin --push >/dev/null 2>&1; then
       echo "Private GitHub repo created and pushed: $SLUG"

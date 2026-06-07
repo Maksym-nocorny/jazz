@@ -45,7 +45,9 @@ Ask in plain language; group so it isn't a wall. Adapt, but cover:
 
 Synthesize answers into a one-page brief: business, goal + success metric, audience, scope (pages +
 features), `needs_backend` yes/no, content ownership, brand constraints, three feeling-words,
-timeline/budget, approvals. List **open questions** to resolve before Phase 1.
+timeline/budget, approvals. Include a **Must-avoid** list — the client's explicit dislikes (colors,
+styles, words, imagery, competitors not to resemble), drawn from the "sites you dislike" answers;
+the designer and Judge treat these as hard nos. List **open questions** to resolve before Phase 1.
 
 ## Definition of done
 

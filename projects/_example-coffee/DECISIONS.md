@@ -112,3 +112,14 @@ Consequences: motion tokens emitted as CSS vars (`--ease-*`, `--duration-*`); `d
 across sections + a split-text hero + a value marquee; new `motion` and `award-winning-patterns`
 skills and a shared `templates/ui-kit/`. Verified live: 24 elements reveal on scroll, 0 console
 errors, `?motion=0` deterministic.
+
+## D9: Lenis smooth scroll (premium layer) — 2026-06-06
+Context: the client wanted a more premium feel; the motion core was built but the optional layer
+wasn't applied.
+Decision: add **Lenis** inertial smooth scroll (the one external motion dependency), gated on
+`prefers-reduced-motion` / `?motion=0`, with smooth anchor-link `scrollTo`.
+Why: highest-impact "premium" cue for an editorial site; it coexists with the `data-motion` reveals
+(IntersectionObserver is position-based, not scroll-event-based). The framer organisms (HeroPinned
+etc.) weren't needed here.
+Consequences: `lenis` dependency + `LenisProvider` in the layout. Verified live: `.lenis` active,
+all 24 reveals still fire, 0 console errors; disabled automatically for reduced-motion users.

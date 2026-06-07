@@ -11,6 +11,10 @@ direction** (recorded in `DECISIONS.md`), not the median of every Tailwind tutor
 direction deliberately uses something on the "avoid" list, that's allowed — **log it in
 DECISIONS.md with the reason.**
 
+Also honor the client's **Must-avoid** list from the brief (`00_brief/BRIEF.md`) — their explicit
+dislikes (colors, styles, words, imagery). Those are hard nos regardless of direction; the Judge
+checks against them.
+
 ## The "AI tells" — avoid by default
 
 Each is a real, named signal that reads as machine-generated when used as an unconsidered default:

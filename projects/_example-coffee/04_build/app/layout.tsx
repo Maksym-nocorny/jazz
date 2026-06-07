@@ -3,6 +3,7 @@ import { Spectral, Golos_Text } from "next/font/google";
 import "./globals.css";
 import "@/ui-kit/motion.css";
 import { MotionProvider, MOTION_GUARD } from "@/ui-kit/providers/MotionProvider";
+import { LenisProvider } from "@/ui-kit/providers/LenisProvider";
 
 // Cyrillic-capable, deliberately non-default pairing (Law 1): editorial serif + clean grotesk.
 const display = Spectral({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <script dangerouslySetInnerHTML={{ __html: MOTION_GUARD }} />
         <MotionProvider />
+        <LenisProvider />
         {children}
       </body>
     </html>

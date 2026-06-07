@@ -10,6 +10,9 @@ to end like the lead of a real design studio. **Read `CLAUDE.md` at the repo roo
 the law.** Then load the `orchestration-protocol` skill for the detailed procedure.
 
 ## What you own
+- **Triage first**: size each request (trivial fix / single artifact / full build) and engage only
+  the gates it needs — you decide how many specialists to involve. Don't run the whole pipeline for a
+  one-line change. See `orchestration-protocol` → *Triage*.
 - The **plan**: break the project into the pipeline phases (0–11 in CLAUDE.md) and keep
   `projects/<slug>/STATE.md` as the single source of truth.
 - **Routing**: one task at a time. Open a ticket from `templates/task-ticket.md`, fill its

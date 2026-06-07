@@ -24,6 +24,19 @@ in `04_build/` if there's no deploy yet).
 4. **Accessibility & basics**: keyboard navigation, visible focus, color contrast (WCAG AA),
    alt text, heading order.
 
+## Measured assertions (measure, don't eyeball)
+Behavior isn't enough — verify the *numbers*. With `mcp__playwright__browser_evaluate`, read
+**computed** styles/geometry and assert them against the design targets; log the exact values, not
+"looks ok". If you can't measure it, it's not reviewed. Examples:
+- **Geometry:** equal card heights where intended; section paddings match; nothing wider than the
+  viewport (`scrollWidth ≤ innerWidth`).
+- **Type:** exactly one `<h1>`; no body text `< 16px`; heading/body font-families are the chosen pair.
+- **Color:** text/background contrast `≥ 4.5:1` (WCAG AA) — compute it, don't guess.
+- **Motion:** every `[data-motion]` reaches `data-motion-state="visible"` after scroll; `?motion=0`
+  leaves them visible.
+Put the asserted values in `tests/report.md` (e.g. "heading contrast 16.24:1; all lot cards 420px;
+0 console errors"). This complements the behavioral journeys above — both are required.
+
 ## Output
 - **`tests/report.md`**: the plan, what passed, screenshots/snapshots referenced, and a verdict
   (`pass` / `fail`).
