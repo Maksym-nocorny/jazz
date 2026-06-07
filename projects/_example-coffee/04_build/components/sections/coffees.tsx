@@ -5,7 +5,9 @@ import { coffees, type Coffee } from "@/lib/content";
 
 function CoffeeCard({ c, featured = false }: { c: Coffee; featured?: boolean }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-surface-raised shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+    <article
+      data-motion="blur"
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-border bg-surface-raised shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
       <div className={`relative overflow-hidden ${featured ? "aspect-[4/3]" : "aspect-[16/10]"}`}>
         <Image
           src={c.image}

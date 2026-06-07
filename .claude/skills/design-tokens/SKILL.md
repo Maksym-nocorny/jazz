@@ -85,3 +85,6 @@ the JSON and the CSS in sync and treat the JSON as the spec of record.)
 - [ ] 2–3 schemes + a type pairing, all swappable via the semantic layer.
 - [ ] Every text/background pair passes **WCAG AA** contrast.
 - [ ] Tailwind/shadcn consume `var(--…)`; `grep` of `04_build/` finds no stray hex/px in components.
+- [ ] **Motion is tokenized too**: easing curves and durations are tokens emitted as CSS vars
+      (`--ease-out`, `--duration-section`, …); no hardcoded `cubic-bezier(...)` or `0.3s` in
+      components (see the `motion` skill).

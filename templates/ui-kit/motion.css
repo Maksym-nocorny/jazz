@@ -1,0 +1,57 @@
+/*
+  Jazz motion contract (Law 2 for motion: values are tokens, no hardcoded curves/durations).
+  Pair with MotionProvider + the inline <head> guard that adds `.motion-ready` before paint.
+  Elements opt in with `data-motion`. They are VISIBLE by default, so no-JS, prefers-reduced-motion,
+  and `?motion=0` all render the final state (deterministic screenshots for visual-iteration).
+*/
+:root {
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);     /* fast-in, gentle-out, no overshoot */
+  --ease-minimize: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-micro: 0.15s;
+  --duration-section: 0.6s;
+}
+
+/* Hidden initial state is armed only once `.motion-ready` is on <html> (set pre-paint by the guard).
+   Without it (reduced-motion / ?motion=0 / no JS), elements stay in their final visible state. */
+.motion-ready [data-motion] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity var(--duration-section) var(--ease-out),
+    transform var(--duration-section) var(--ease-out),
+    filter var(--duration-section) var(--ease-out);
+  transition-delay: calc(var(--motion-index, 0) * 70ms);
+  will-change: opacity, transform;
+}
+.motion-ready [data-motion="blur"] { filter: blur(10px); }
+.motion-ready [data-motion="up"] { transform: translateY(30px); }
+.motion-ready [data-motion="scale"] { transform: scale(0.96); }
+
+.motion-ready [data-motion][data-motion-state="visible"] {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Infinite marquee (pure CSS, paused on reduced-motion). */
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee__track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee-scroll var(--marquee-duration, 30s) linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-ready [data-motion] { transition: none; opacity: 1; transform: none; filter: none; }
+  .marquee__track { animation: none; }
+}

@@ -48,6 +48,8 @@ seed() { # <template> <dest>
 seed "STATE.md"      "$DEST/STATE.md"
 seed "DECISIONS.md"  "$DEST/DECISIONS.md"
 seed "CLIENT_LOG.md" "$DEST/CLIENT_LOG.md"
+seed "RETRO.md"      "$DEST/RETRO.md"
+seed "HANDOFF.md"    "$DEST/HANDOFF.md"
 
 # Each client project is its OWN private repo from the start (independent of the public Jazz repo,
 # which gitignores projects/*). This makes handoff a simple transfer. Best-effort — never abort the

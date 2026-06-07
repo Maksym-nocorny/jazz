@@ -41,6 +41,10 @@ Only `status: approved` lets the PM advance. `blocking` issues force `needs-revi
   designer's render screenshots and look at them: real imagery (**no placeholder rectangles**), a
   clear focal point, confident type scale, editorial/asymmetric composition, considered detail. If
   it reads as generic or templated, it's `needs-revision`. (See `visual-iteration` + `imagery`.)
+- **Motion & reduced-motion**: motion is purposeful and **token-driven** (no hardcoded curves/
+  durations — `grep` for `cubic-bezier`/`ms` in components); `prefers-reduced-motion` is honored and
+  **`?motion=0` renders the final state** (verify both). The page reaches for at least one
+  distinctive `award-winning-patterns` move rather than only safe blocks — without over-animating.
 - **Anti-AI**: judged against the **chosen design direction** in `DECISIONS.md` — flag templated AI
   tells unless that direction deliberately calls for them (and it's logged).
 - **Backend**: input validated, no secrets in repo, authz on protected routes, errors handled.

@@ -13,6 +13,7 @@ export function Principles() {
           {principles.items.map((item, i) => (
             <li
               key={item.n}
+              data-motion="blur"
               className={`grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 py-7 ${
                 i > 0 ? "border-t border-border" : ""
               }`}

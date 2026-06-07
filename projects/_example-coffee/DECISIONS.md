@@ -98,3 +98,17 @@ Consequences: 10 curated photos in `04_build/public/images/` (credits in `public
 served via `next/image`; new `imagery` + `visual-iteration` skills added to the system and to the
 `designer`/`judge` agents, so this is enforced on every project, not just here. Final screenshots in
 `03_design/final/`.
+
+## D8: Motion system — library-free scroll-reveal + tokens — 2026-06-06
+Context: the build had no real motion (a load-only CSS fade); the `motion.*` tokens in
+`design-tokens.json` were unused and the curve was hardcoded. A comparison with another orchestra
+exposed motion as our biggest design gap.
+Options: (a) library-free `data-motion` + IntersectionObserver; (b) framer-motion; (c) GSAP.
+Decision: **(a) library-free core** (zero dependencies) for reveals + split-text + marquee; framer
+is reserved for premium scroll organisms on expressive projects.
+Why: zero-dep, fits the token discipline, scroll-triggered, and degrades to the final state on
+`prefers-reduced-motion` / `?motion=0`. Framer/GSAP weren't justified for this editorial landing.
+Consequences: motion tokens emitted as CSS vars (`--ease-*`, `--duration-*`); `data-motion` reveals
+across sections + a split-text hero + a value marquee; new `motion` and `award-winning-patterns`
+skills and a shared `templates/ui-kit/`. Verified live: 24 elements reveal on scroll, 0 console
+errors, `?motion=0` deterministic.

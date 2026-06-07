@@ -42,6 +42,9 @@ To resume later: **"продовжуємо <client>"** → read that project's `
    AI tells. → Law 1.
 5. **Loops are bounded.** Judge↔specialist ≤ **3 iterations**, then escalate. The client loop
    repeats until the client approves a phase, with **every round logged** in `CLIENT_LOG.md`.
+6. **Learn across sessions.** After each phase, the owning agent appends a dated entry to the
+   project's `RETRO.md` (what was slow, what was missed, what to do differently). **Read `RETRO.md`
+   at the start of every session** so past mistakes are pre-applied, not re-discovered.
 
 ---
 
@@ -51,7 +54,7 @@ To resume later: **"продовжуємо <client>"** → read that project's `
 |---|---|---|
 | **pm** | Plan, phases, routing, gates, client comms, `STATE.md` / `DECISIONS.md` / `CLIENT_LOG.md` | `orchestration-protocol`, `brief-intake`, `new-project`, engineering:standup |
 | **researcher** | Market, competitor, audience research; positioning | deep-research, design:user-research, design:research-synthesis |
-| **designer** | Interviews, art direction, wireframes, design tokens, UI-kit, atomic components, final UI, frontend build | wireframe, design:design-system, design:design-critique, design:accessibility-review, `anti-ai-design`, `design-tokens`, `ui-kit`, `imagery`, `visual-iteration` |
+| **designer** | Interviews, art direction, wireframes, design tokens, UI-kit, atomic components, final UI, frontend build | wireframe, design:design-system, design:design-critique, design:accessibility-review, `anti-ai-design`, `award-winning-patterns`, `design-tokens`, `ui-kit`, `imagery`, `motion`, `visual-iteration` |
 | **copywriter** | Site copy (in the client's language) | design:ux-copy |
 | **backend** | APIs, data model, auth — **only if the project needs it** | engineering:architecture, engineering:system-design |
 | **devops** | Repo, CI/CD, hosting (Vercel), domains, services, env, deploy | engineering:deploy-checklist, engineering:incident-response |
@@ -76,11 +79,11 @@ Phases run in order; the PM may skip optional ones (Lite route) and records that
 | 4 | Content | copywriter | copy deck (client language) | — |
 | 5 | Wireframes | designer | **≥3 lo-fi variants** + recommendation + scoring | ✅ pick/merge + edits |
 | 6 | Design system | designer | tokens (**2–3 schemes**), **UI-kit**, atoms | ✅ pick scheme + edits |
-| 7 | Final + build | designer | pages in Next.js from tokens + components + copy + **real imagery**; visual-iteration loop | ✅ preview + edits |
+| 7 | Final + build | designer | pages in Next.js from tokens + components + copy + **real imagery** + **motion**; visual-iteration loop | ✅ preview + edits |
 | 8 | Backend | backend | API / DB / auth (**conditional**) | — |
 | 9 | DevOps | devops | repo / CI / services + **deploy to Vercel** | — |
 | 10 | E2E test | tester | Playwright on the live URL vs acceptance criteria → bugs to `reviews/` | — |
-| 11 | Review & handoff | pm | presentation, feedback, delivery | ✅ acceptance |
+| 11 | Review & handoff | pm | presentation, feedback, **HANDOFF.md**, repo transfer | ✅ acceptance |
 
 ### Two feedback loops
 

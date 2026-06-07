@@ -4,8 +4,9 @@ What's built in-house vs brought in, so the system stays maintainable.
 
 ## Built for Jazz (this repo, MIT)
 - 8 agents — `.claude/agents/`
-- 8 skills — `orchestration-protocol`, `anti-ai-design`, `design-tokens`, `ui-kit`, `imagery`,
-  `visual-iteration`, `brief-intake`, `new-project`
+- 10 skills — `orchestration-protocol`, `anti-ai-design`, `award-winning-patterns`, `design-tokens`,
+  `ui-kit`, `imagery`, `motion`, `visual-iteration`, `brief-intake`, `new-project`
+- Shared component kit — `templates/ui-kit/` (library-free motion core + premium framer organisms)
 - Templates (`templates/`), the Next.js starter, and docs.
 
 ## Vendored (third-party, with license)
@@ -30,5 +31,12 @@ What's built in-house vs brought in, so the system stays maintainable.
 - [shadcn/ui theming](https://ui.shadcn.com/docs/theming)
 - AI-design tells: designer write-ups on purple-gradient/glassmorphism/3-card "AI look" (see
   `methodology.md` and the `anti-ai-design` skill).
+
+## Inspiration
+- The **motion system** (data-motion scroll-reveal, `?motion=0`, split-text, marquee, the pinned/
+  sticky organisms), the **award-winning-patterns** catalog idea, and the **RETRO.md** / **HANDOFF.md**
+  process artifacts were informed by studying [halinskiy/aisoldier](https://github.com/halinskiy/aisoldier)
+  — a kindred agent-orchestra with a strong design/motion system and Webflow-handoff tooling. Ideas
+  adapted, not copied; values kept per-project (Law 1) rather than baked into one house style.
 
 > When you vendor or reference new skills, add a row here with the version/date and license.

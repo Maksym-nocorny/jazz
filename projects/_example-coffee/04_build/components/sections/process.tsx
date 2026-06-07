@@ -7,7 +7,7 @@ export function Process() {
   return (
     <section id="proces" className="border-t border-border py-20 md:py-28">
       <Container className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="order-2 lg:order-1 lg:col-span-6">
+        <div className="order-2 lg:order-1 lg:col-span-6" data-motion="blur">
           <div className="relative aspect-[5/4] overflow-hidden rounded-lg shadow-md">
             <Image
               src={process.image}
@@ -18,7 +18,7 @@ export function Process() {
             />
           </div>
         </div>
-        <div className="order-1 lg:order-2 lg:col-span-6">
+        <div className="order-1 lg:order-2 lg:col-span-6" data-motion="blur">
           <Badge>
             <span className="h-px w-8 bg-accent" aria-hidden />
             {process.eyebrow}

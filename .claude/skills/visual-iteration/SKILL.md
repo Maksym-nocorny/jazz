@@ -22,7 +22,8 @@ see what you built, judge it honestly, and iterate. Do this **before** showing t
      npx playwright screenshot --full-page --viewport-size=390,844 \
        http://localhost:3000 /tmp/page-mobile.png
      ```
-     (Lazy images need the wait; full-page scroll triggers their load.)
+     (Lazy images need the wait; full-page scroll triggers their load. If the build has motion, add
+     **`?motion=0`** to the URL for a deterministic final-state capture — no mid-animation frames.)
 3. **Critique** against the chosen design direction and the checklist below. Name the 3–5
    highest-impact problems.
 4. **Fix** those, rebuild, screenshot again. Stop when the craft checklist passes and there are no

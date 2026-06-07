@@ -83,3 +83,11 @@ Client said: «Оце інша справа. Тепер це готовий са
 кава одразу продає. Затверджую.»
 Decision: approved — preview accepted; proceed to deploy + E2E test.
 Routed to: devops — deploy to Vercel; tester — E2E on the live URL.
+
+## Phase 7 — Final preview — round 3 (motion) — 2026-06-06
+Shown: the build with motion — a word-by-word hero headline, scroll reveals across sections, and a
+value marquee; all respecting `prefers-reduced-motion` / `?motion=0`.
+Client said: «О, тепер воно живе. Заголовок збирається по словах, секції плавно зʼявляються —
+відчуття дорогої студійної роботи. Залишаємо.»
+Decision: approved.
+Routed to: devops — redeploy; tester — re-verify motion (reveals + reduced-motion).

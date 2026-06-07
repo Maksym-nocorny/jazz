@@ -8,6 +8,16 @@ export const images = {
   bag: "/images/bag.jpg",
 };
 
+// Brand-value ribbon (marquee).
+export const ribbon = [
+  "Спешелті-обсмажка",
+  "Малі партії",
+  "Прозоре походження",
+  "48 годин до чашки",
+  "Львів",
+  "Свіже зерно",
+];
+
 export const nav = [
   { label: "Кава", href: "#kava" },
   { label: "Обсмажка", href: "#proces" },
@@ -17,7 +27,7 @@ export const nav = [
 
 export const hero = {
   eyebrow: "Спешелті-обсмажка · Львів",
-  title: "Кава для тих,\nхто чує різницю.",
+  title: "Кава для тих, хто чує різницю.",
   subtitle:
     "Мікролоти, обсмажені малими партіями у Львові. Знаємо ферму, висоту й дату врожаю кожного зерна — і пакуємо впродовж доби.",
   ctaPrimary: "Обрати каву",

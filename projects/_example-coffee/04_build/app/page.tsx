@@ -1,5 +1,6 @@
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
+import { Ribbon } from "@/components/sections/ribbon";
 import { Coffees } from "@/components/sections/coffees";
 import { Principles } from "@/components/sections/principles";
 import { Process } from "@/components/sections/process";
@@ -20,6 +21,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Ribbon />
         <Coffees />
         <Principles />
         <Process />
