@@ -1,0 +1,18 @@
+{
+  "name": "jazz",
+  "owner": { "name": "Maksym-nocorny", "url": "https://github.com/Maksym-nocorny" },
+  "metadata": {
+    "description": "Jazz — an agent-orchestra web studio. Install manually by URL; not listed in any public Claude plugin directory.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "jazz",
+      "source": "./",
+      "description": "Agency-as-code: a subagent orchestra (PM, researcher, designer, copywriter, backend, devops, judge, tester) that runs a client web project end-to-end.",
+      "version": "0.1.0",
+      "category": "workflow",
+      "license": "MIT"
+    }
+  ]
+}

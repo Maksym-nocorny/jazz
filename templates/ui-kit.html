@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UI Kit — kitchen sink (template)</title>
+<!--
+  Jazz UI-kit / kitchen-sink TEMPLATE. Copy to 03_design/ui-kit/index.html and replace the token
+  values from design-tokens.json. RULE: every component a project ships must appear here, in every
+  state. Pages may only use what's on this page. All values come from CSS variables (tokens) — no
+  hardcoded colors/px in components.
+-->
+<style>
+  :root {
+    /* TOKENS (mirror design-tokens.json semantic tier) */
+    --color-surface: #FBF7F1;
+    --color-surface-raised: #FFFFFF;
+    --color-text: #16110D;
+    --color-text-muted: #6B5D52;
+    --color-action-primary: #7A3B2E;
+    --color-action-primary-foreground: #FFFFFF;
+    --color-action-primary-hover: #94483A;
+    --color-border: #F3ECE2;
+    --color-focus-ring: #2E5A4F;
+    --color-danger: #B23A2E;
+    --font-display: "Georgia", serif;
+    --font-body: system-ui, sans-serif;
+    --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem;
+    --radius-interactive: 0.5rem; --radius-lg: 1rem;
+    --shadow-md: 0 6px 20px -4px rgba(22,17,13,.12);
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--color-surface); color:var(--color-text);
+         font-family:var(--font-body); line-height:1.6; padding:var(--space-8); }
+  h1,h2,h3 { font-family:var(--font-display); line-height:1.1; }
+  section { margin-block: var(--space-8); }
+  .muted { color: var(--color-text-muted); }
+  .row { display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center; }
+  .swatch { width:84px; height:84px; border-radius:var(--radius-interactive); border:1px solid var(--color-border); }
+  .card { background:var(--color-surface-raised); border:1px solid var(--color-border);
+          border-radius:var(--radius-lg); padding:var(--space-6); box-shadow:var(--shadow-md); max-width:360px; }
+  /* Atom: Button (consumes tokens only) */
+  .btn { font:inherit; font-weight:500; padding:.7em 1.2em; border-radius:var(--radius-interactive);
+         border:1px solid transparent; cursor:pointer; transition:background .15s; }
+  .btn--primary { background:var(--color-action-primary); color:var(--color-action-primary-foreground); }
+  .btn--primary:hover { background:var(--color-action-primary-hover); }
+  .btn--ghost { background:transparent; color:var(--color-text); border-color:var(--color-border); }
+  .btn:focus-visible { outline:2px solid var(--color-focus-ring); outline-offset:2px; }
+  .btn[disabled] { opacity:.5; cursor:not-allowed; }
+  /* Atom: Input */
+  .field { display:flex; flex-direction:column; gap:.35rem; max-width:320px; }
+  .input { font:inherit; padding:.6em .8em; border-radius:var(--radius-interactive);
+           border:1px solid var(--color-border); background:var(--color-surface-raised); }
+  .input:focus-visible { outline:2px solid var(--color-focus-ring); outline-offset:1px; }
+  .input--error { border-color:var(--color-danger); }
+  .error { color:var(--color-danger); font-size:.85rem; }
+  .badge { display:inline-block; padding:.15em .6em; border-radius:999px; font-size:.8rem;
+           background:var(--color-action-primary); color:var(--color-action-primary-foreground); }
+</style>
+</head>
+<body>
+  <h1>UI Kit — kitchen sink</h1>
+  <p class="muted">Every component, every state. The contract for the build. Tokens only.</p>
+
+  <section>
+    <h2>Color (semantic)</h2>
+    <div class="row">
+      <div><div class="swatch" style="background:var(--color-action-primary)"></div><small>action-primary</small></div>
+      <div><div class="swatch" style="background:var(--color-surface)"></div><small>surface</small></div>
+      <div><div class="swatch" style="background:var(--color-text)"></div><small>text</small></div>
+      <div><div class="swatch" style="background:var(--color-danger)"></div><small>danger</small></div>
+    </div>
+    <p class="muted">Note next to each: hex + contrast pass (WCAG AA) on its paired surface.</p>
+  </section>
+
+  <section>
+    <h2>Type scale</h2>
+    <p style="font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4.5rem)">Display</p>
+    <h2>Heading</h2>
+    <p>Body — the quick brown fox jumps over the lazy dog.</p>
+    <p class="muted">Caption / muted</p>
+  </section>
+
+  <section>
+    <h2>Buttons</h2>
+    <div class="row">
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--ghost">Secondary</button>
+      <button class="btn btn--primary" disabled>Disabled</button>
+    </div>
+    <p class="muted">Show: default · hover · focus · active · disabled · loading · sizes.</p>
+  </section>
+
+  <section>
+    <h2>Form field — states</h2>
+    <div class="row" style="align-items:flex-start">
+      <label class="field">Email<input class="input" placeholder="you@example.com" /></label>
+      <label class="field">Email (error)<input class="input input--error" value="not-an-email" /><span class="error">Enter a valid email.</span></label>
+      <label class="field">Disabled<input class="input" value="—" disabled /></label>
+    </div>
+  </section>
+
+  <section>
+    <h2>Card / badge (molecule)</h2>
+    <div class="card">
+      <span class="badge">New</span>
+      <h3>Card title</h3>
+      <p class="muted">Real content goes here — never lorem ipsum.</p>
+      <button class="btn btn--primary">Action</button>
+    </div>
+  </section>
+</body>
+</html>

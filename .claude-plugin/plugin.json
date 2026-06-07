@@ -1,0 +1,11 @@
+{
+  "name": "jazz",
+  "version": "0.1.0",
+  "description": "Agency-as-code: a Claude Code subagent orchestra that runs a client web project end-to-end (research, design, copy, build, ship, QA) and produces sites that don't look AI-generated.",
+  "author": { "name": "Maksym-nocorny", "url": "https://github.com/Maksym-nocorny" },
+  "homepage": "https://github.com/Maksym-nocorny/jazz",
+  "license": "MIT",
+  "keywords": ["agents", "orchestration", "multi-agent", "web-design", "design-system", "design-tokens", "atomic-design"],
+  "agents": ["./.claude/agents"],
+  "skills": ["./.claude/skills"]
+}

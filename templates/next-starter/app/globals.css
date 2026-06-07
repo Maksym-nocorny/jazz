@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Design tokens as CSS variables (semantic tier). Mirror design-tokens.json.
+  Swap these values to re-theme the whole site. Components reference them via Tailwind
+  (bg-primary, text-muted, rounded-interactive, …) — never hardcode hex/px.
+*/
+:root {
+  --color-surface: #fbf7f1;
+  --color-surface-raised: #ffffff;
+  --color-text: #16110d;
+  --color-text-muted: #6b5d52;
+  --color-action-primary: #7a3b2e;
+  --color-action-primary-foreground: #ffffff;
+  --color-action-primary-hover: #94483a;
+  --color-border: #f3ece2;
+  --color-focus-ring: #2e5a4f;
+  --color-danger: #b23a2e;
+
+  --font-display: "Georgia", serif;
+  --font-body: system-ui, -apple-system, sans-serif;
+
+  --radius-interactive: 0.5rem;
+  --radius-lg: 1rem;
+  --shadow-md: 0 6px 20px -4px rgba(22, 17, 13, 0.12);
+}
+
+.dark {
+  --color-surface: #16110d;
+  --color-surface-raised: #211a14;
+  --color-text: #fbf7f1;
+  --color-text-muted: #b6a999;
+  --color-border: #2c241d;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    line-height: 1.1;
+  }
+}

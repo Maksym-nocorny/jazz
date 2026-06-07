@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  ВОВК — design tokens (semantic tier) as CSS variables. Mirrors
+  03_design/tokens/design-tokens.json. Swap these to re-theme the whole site.
+  Components reference tokens via Tailwind (bg-primary, text-muted, …) — never hardcoded hex.
+  --font-spectral / --font-golos are injected by next/font in app/layout.tsx.
+*/
+:root {
+  /* color — Scheme A: Espresso */
+  --color-surface: #f7f0e6;
+  --color-surface-raised: #ffffff;
+  --color-surface-inverse: #5a3120;
+  --color-text: #1a130d;
+  --color-text-muted: #6e5a48;
+  --color-text-on-inverse: #f7f0e6;
+  --color-action-primary: #6f3b26;
+  --color-action-primary-foreground: #ffffff;
+  --color-action-primary-hover: #854a31;
+  --color-accent: #c5683b;
+  --color-border: #ede2d2;
+  --color-danger: #a8392b;
+  --color-focus-ring: #2c4a3b;
+
+  /* type */
+  --font-display: var(--font-spectral), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-golos), system-ui, -apple-system, sans-serif;
+
+  /* radius / shadow */
+  --radius-sm: 0.25rem;
+  --radius-interactive: 0.5rem;
+  --radius-lg: 1.25rem;
+  --shadow-sm: 0 1px 2px rgba(26, 19, 13, 0.08);
+  --shadow-md: 0 10px 30px -8px rgba(26, 19, 13, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    line-height: 1.05;
+    font-weight: 600;
+  }
+  ::selection {
+    background: var(--color-accent);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
