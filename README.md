@@ -96,9 +96,14 @@ projects/            one folder per client (see projects/_example-coffee for a w
 
 ## A worked example
 [`projects/_example-coffee/`](projects/_example-coffee/) is a full demo run for a fictional
-Ukrainian specialty-coffee roaster — research, copy, art direction, wireframes, tokens, UI-kit, a
-built Next.js landing page, Judge reviews, and a Tester report. It's living documentation of the
+Ukrainian specialty-coffee roaster (**ВОВК Coffee**) — research, copy, art direction, wireframes,
+tokens, UI-kit, a built Next.js landing page with real curated photography, Judge reviews (incl. the
+visual-quality gate), a visual-iteration record, and a Tester report. Living documentation of the
 whole pipeline.
+
+**Live demo → https://vovk-coffee.vercel.app**
+
+[![ВОВК Coffee — landing](projects/_example-coffee/03_design/final/landing-desktop.png)](https://vovk-coffee.vercel.app)
 
 ## Credits & license
 Built on ideas from Anthropic's agent engineering, Brad Frost's Atomic Design, the W3C Design

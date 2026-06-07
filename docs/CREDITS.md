@@ -4,8 +4,8 @@ What's built in-house vs brought in, so the system stays maintainable.
 
 ## Built for Jazz (this repo, MIT)
 - 8 agents — `.claude/agents/`
-- 6 skills — `orchestration-protocol`, `anti-ai-design`, `design-tokens`, `ui-kit`, `brief-intake`,
-  `new-project`
+- 8 skills — `orchestration-protocol`, `anti-ai-design`, `design-tokens`, `ui-kit`, `imagery`,
+  `visual-iteration`, `brief-intake`, `new-project`
 - Templates (`templates/`), the Next.js starter, and docs.
 
 ## Vendored (third-party, with license)
@@ -19,6 +19,7 @@ What's built in-house vs brought in, so the system stays maintainable.
 | design / engineering plugin skills | Claude Code marketplaces | per-plugin |
 | `anthropics/skills` | [github](https://github.com/anthropics/skills) | per-repo |
 | subagent prompt references | [VoltAgent/awesome-claude-code-subagents](https://github.com/VoltAgent/awesome-claude-code-subagents), [wshobson/agents](https://github.com/wshobson/agents) | MIT |
+| demo photography | [Pexels](https://www.pexels.com) (free for commercial use) — see `projects/_example-coffee/04_build/public/images/CREDITS.md` | Pexels License |
 
 ## Research sources behind the design laws
 - Anthropic — [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents),

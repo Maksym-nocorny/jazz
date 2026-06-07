@@ -66,9 +66,20 @@ Decision: approved — scheme = Espresso.
 Routed to: designer — ship Espresso primitives in `design-tokens.json` (D5); build final landing.
 
 ## Phase 7 — Final preview — round 1 — 2026-06-05
-Shown: built landing preview (Next.js, Vercel preview deploy) with real copy, Espresso scheme,
-Spectral × Golos Text, asymmetric origin list, dark «Чому вовк» story band.
-Client said: «Дуже круто, саме той настрій. Видно, що крафт, а не шаблон. Фото зерна лягли добре,
-кнопка «Обрати каву» одразу під рукою. Затверджую — запускаємо.»
+Shown: first built landing preview (Next.js) — real copy, Espresso scheme, Spectral × Golos Text,
+asymmetric origin list, dark «Чому вовк» band — but with image *placeholders* (no photography yet).
+Client said: «Структура й шрифти — добре, але виглядає занадто простенько, як макет, а не готовий
+сайт. Бракує справжніх фото — зерна, ростер, атмосфера. Зараз це не схоже на роботу дизайнера.»
+Decision: revise (round 2 needed) — design-quality gap (placeholder imagery, flat composition).
+Routed to: designer — run the `imagery` + `visual-iteration` skills: add curated real photography
+(hero, кожен лот, ростер, історія) and iterate on composition/craft until it looks designed.
+
+## Phase 7 — Final preview — round 2 — 2026-06-06
+Shown: rebuilt landing with curated Pexels photography (hero pour, three distinct lot shots, a
+roaster band, a barista story), an image-led editorial hero with an overlapping "now roasting" card,
+a new «Як ми обсмажуємо» section with stats, and hover/motion polish. Designer ran 3 visual-iteration
+rounds (desktop + mobile screenshots in `03_design/final/`).
+Client said: «Оце інша справа. Тепер це готовий сайт, а не макет — фото оживили все, герой чіпляє,
+кава одразу продає. Затверджую.»
 Decision: approved — preview accepted; proceed to deploy + E2E test.
-Routed to: devops — deploy to `vovk.coffee`; tester — E2E on the live URL.
+Routed to: devops — deploy to Vercel; tester — E2E on the live URL.

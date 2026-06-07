@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
@@ -5,15 +6,15 @@ import { hero, coffees } from "@/lib/content";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden border-b border-border">
-      <Container className="grid gap-12 py-20 md:grid-cols-12 md:py-28">
-        {/* Headline column — intentionally wide and offset (editorial, not centered) */}
-        <div className="md:col-span-7">
+    <section id="top" className="hero-wash relative overflow-hidden">
+      <Container className="grid items-center gap-12 py-16 md:py-20 lg:min-h-[88vh] lg:grid-cols-12 lg:gap-8">
+        {/* Headline — editorial, left, intentionally large */}
+        <div className="animate-rise lg:col-span-6 lg:pr-10">
           <Badge>
             <span className="h-px w-8 bg-accent" aria-hidden />
             {hero.eyebrow}
           </Badge>
-          <h1 className="mt-6 text-[clamp(2.75rem,7vw,5.25rem)] font-semibold">
+          <h1 className="mt-6 whitespace-pre-line text-balance text-[clamp(2.9rem,7vw,5.5rem)] font-semibold tracking-[-0.01em]">
             {hero.title}
           </h1>
           <p className="mt-6 max-w-prose text-lg text-text-muted">{hero.subtitle}</p>
@@ -21,32 +22,39 @@ export function Hero() {
             <ButtonLink href="#kava" size="lg">
               {hero.ctaPrimary}
             </ButtonLink>
-            <ButtonLink href="#istoriya" variant="ghost" size="lg">
+            <ButtonLink href="#proces" variant="ghost" size="lg">
               {hero.ctaSecondary}
             </ButtonLink>
           </div>
           <p className="mt-4 text-sm text-text-muted">{hero.ctaNote}</p>
         </div>
 
-        {/* Offset "now roasting" card — asymmetric counterweight, real data */}
-        <aside className="md:col-span-5 md:pt-16">
-          <div className="rounded-lg border border-border bg-surface-raised p-7 shadow-md">
+        {/* Image + overlapping "now roasting" card — asymmetric counterweight */}
+        <div className="animate-rise-2 relative lg:col-span-6">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-lg shadow-md sm:aspect-[16/10] lg:aspect-[5/6]">
+            <Image
+              src={hero.image}
+              alt={hero.imageAlt}
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="mt-5 rounded-lg border border-border bg-surface-raised p-6 shadow-md lg:absolute lg:-bottom-8 lg:-left-10 lg:mt-0 lg:w-72">
             <p className="text-sm uppercase tracking-wide text-text-muted">Зараз у обсмажці</p>
-            <ul className="mt-5 divide-y divide-border">
+            <ul className="mt-4 divide-y divide-border">
               {coffees.items.map((c) => (
-                <li key={c.region} className="flex items-baseline justify-between gap-4 py-3">
-                  <span className="font-display text-lg">
+                <li key={c.region} className="flex items-baseline justify-between gap-3 py-2.5">
+                  <span className="font-display text-base">
                     {c.origin} · {c.region}
                   </span>
                   <span className="shrink-0 text-sm text-text-muted">{c.price}</span>
                 </li>
               ))}
             </ul>
-            <a href="#kava" className="mt-5 inline-block text-sm font-medium text-primary underline-offset-4 hover:underline">
-              {coffees.link} →
-            </a>
           </div>
-        </aside>
+        </div>
       </Container>
     </section>
   );

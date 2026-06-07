@@ -82,3 +82,19 @@ for the Instagram mobile traffic without losing the editorial feel. B risked ble
 the buy action.
 Consequences: canonical landing section order = Variant A (post-edit) in `wireframes/NOTES.md`; this
 order drives Phase 7 build and the copy-deck section sequence. Scope for v1 stays a single landing.
+
+## D7: Imagery = curated real photography + visual-iteration loop — 2026-06-06
+Context: the Phase 7 round-1 preview shipped with image *placeholders* and read as a flat
+"wireframe," not a designed site (CLIENT_LOG Phase 7 r1). We needed an imagery approach and a way to
+hold visual quality.
+Options: (a) curated real photography (license-clean stock under one lens); (b) AI-generated imagery
+with art direction; (c) custom SVG / illustration.
+Decision: **(a) curated real photography** (Pexels, free for commercial use) + a mandatory
+**visual-iteration loop** (render → screenshot → critique → refine) in Phase 7.
+Why: real photography is the highest-impact fix for the "unfinished" look and the **safest against
+the "AI look"** the client explicitly rejected — AI-generated imagery risked exactly that. The
+visual-iteration loop is what turns a correct build into a designed one.
+Consequences: 10 curated photos in `04_build/public/images/` (credits in `public/images/CREDITS.md`)
+served via `next/image`; new `imagery` + `visual-iteration` skills added to the system and to the
+`designer`/`judge` agents, so this is enforced on every project, not just here. Final screenshots in
+`03_design/final/`.

@@ -61,3 +61,27 @@
     outline-offset: 2px;
   }
 }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+
+@layer utilities {
+  .animate-rise { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+  .animate-rise-2 { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both; }
+  .animate-rise-3 { animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both; }
+  /* warm editorial wash behind the hero — replaces flat cream, no AI gradient */
+  .hero-wash {
+    background:
+      radial-gradient(110% 120% at 100% -10%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 55%),
+      radial-gradient(90% 90% at -10% 110%, color-mix(in srgb, var(--color-action-primary) 8%, transparent), transparent 50%),
+      var(--color-surface);
+  }
+  .text-balance { text-wrap: balance; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise, .animate-rise-2, .animate-rise-3 { animation: none; }
+  html { scroll-behavior: auto; }
+}

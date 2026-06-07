@@ -7,7 +7,7 @@ export function Principles() {
     <section className="border-b border-border py-20 md:py-28">
       <Container className="grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
-          <h2 className="text-3xl md:sticky md:top-24">{principles.heading}</h2>
+          <h2 className="whitespace-pre-line text-balance text-3xl md:sticky md:top-24 md:text-4xl">{principles.heading}</h2>
         </div>
         <ol className="md:col-span-8">
           {principles.items.map((item, i) => (

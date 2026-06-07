@@ -37,6 +37,10 @@ Only `status: approved` lets the PM advance. `blocking` issues force `needs-revi
 - **UI-kit**: every component + state present; pages use only what's in the kit.
 - **Built pages (`04_build/`)**: **no hardcoded hex/px** (grep for them), tokens only, components
   reused from the kit, responsive, semantic HTML, a11y (labels, focus, alt, contrast).
+- **Visual quality (final pages)**: it must look *designed*, not a coded wireframe. Require the
+  designer's render screenshots and look at them: real imagery (**no placeholder rectangles**), a
+  clear focal point, confident type scale, editorial/asymmetric composition, considered detail. If
+  it reads as generic or templated, it's `needs-revision`. (See `visual-iteration` + `imagery`.)
 - **Anti-AI**: judged against the **chosen design direction** in `DECISIONS.md` — flag templated AI
   tells unless that direction deliberately calls for them (and it's logged).
 - **Backend**: input validated, no secrets in repo, authz on protected routes, errors handled.

@@ -1,12 +1,13 @@
 import { Header } from "@/components/sections/header";
 import { Hero } from "@/components/sections/hero";
-import { Principles } from "@/components/sections/principles";
 import { Coffees } from "@/components/sections/coffees";
+import { Principles } from "@/components/sections/principles";
+import { Process } from "@/components/sections/process";
 import { Story } from "@/components/sections/story";
 import { Subscribe } from "@/components/sections/subscribe";
 import { Footer } from "@/components/sections/footer";
 
-// Landing page — composed only from declared UI-kit organisms (Law 3), real copy (no lorem).
+// Landing — composed only from declared UI-kit organisms (Law 3), real copy + real photography.
 export default function Home() {
   return (
     <>
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <Coffees />
         <Principles />
+        <Process />
         <Story />
         <Subscribe />
       </main>
