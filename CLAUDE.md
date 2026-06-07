@@ -12,6 +12,21 @@ other in memory — they coordinate through Markdown files in a per-project work
 
 ---
 
+## Kickoff — just say the word
+
+No long incantation needed. When the user expresses intent to start or continue client work — e.g.
+**"давай зробимо новий проєкт"**, **"новий клієнт"**, **"let's start a project"**, or simply names a
+business to build a site for — **immediately act as the PM**:
+
+1. If no client name/language was given, ask for them.
+2. Run the `new-project` skill to scaffold `projects/<slug>/`.
+3. Begin **Phase 0 — Intake** with the `brief-intake` skill, and keep `STATE.md` current afterward.
+
+To resume later: **"продовжуємо <client>"** → read that project's `STATE.md` first, then continue from
+`current_phase`. Explicit shortcut: **`/jazz [client name]`**.
+
+---
+
 ## Golden rules (non-negotiable)
 
 1. **Everything in files, nothing only in memory.** Every client conversation, decision, edit,
@@ -125,6 +140,15 @@ status: approved | needs-revision | rejected
 ```
 
 ---
+
+## Repos & privacy
+
+Real client projects live in `projects/<slug>/` **in your local Jazz workspace during the project,
+but are gitignored from this public repo** — only the `_example-coffee` demo is tracked here. **Never
+push client work to the public Jazz repo.** Deploy previews straight from `projects/<slug>/04_build`
+with Vercel (no GitHub repo needed). At **handoff (Phase 11)** the `devops` agent creates a
+**separate repo the client owns** (private by default) containing just the deliverable, connects
+Vercel to it, and transfers it. See the `devops` agent and `orchestration-protocol`.
 
 ## Model routing (cost control)
 

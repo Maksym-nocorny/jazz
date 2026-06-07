@@ -32,3 +32,9 @@ Thumbs.db
 coverage/
 playwright-report/
 test-results/
+
+# Client projects are private: kept in the local workspace during the project and given their own
+# repo at handoff. Only the example demo is tracked in this public repo.
+/projects/*
+!/projects/_example-coffee/
+

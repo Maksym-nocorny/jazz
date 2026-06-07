@@ -85,6 +85,15 @@ research → `researcher`; interview/art-direction/wireframes/tokens/UI-kit/comp
 `designer`; copy → `copywriter`; APIs/DB/auth → `backend` (only if `needs_backend: yes`);
 repo/CI/deploy/services → `devops`; every artifact review → `judge`; the running site → `tester`.
 
+## Handoff (Phase 11) — give the client their own repo
+
+The project lives in `projects/<slug>/` in the local Jazz workspace during the engagement and is
+**gitignored from the public Jazz repo** (only the demo is tracked). At handoff the PM has `devops`:
+extract the deliverable (`04_build/` + owned assets), create a **separate, private, client-owned
+repo** (`gh repo create <slug> --private --source … --push`), re-link Vercel to it, and transfer the
+project/domain. Record the repo + live URL in `DEPLOY.md` and `STATE.md`. Never push client work to
+the public Jazz repo.
+
 ## Anti-patterns to avoid
 
 - Don't carry context in conversation memory — write it to files first.

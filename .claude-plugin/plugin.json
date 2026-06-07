@@ -7,5 +7,6 @@
   "license": "MIT",
   "keywords": ["agents", "orchestration", "multi-agent", "web-design", "design-system", "design-tokens", "atomic-design"],
   "agents": ["./.claude/agents"],
-  "skills": ["./.claude/skills"]
+  "skills": ["./.claude/skills"],
+  "commands": ["./.claude/commands"]
 }
