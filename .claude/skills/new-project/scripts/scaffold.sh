@@ -49,5 +49,33 @@ seed "STATE.md"      "$DEST/STATE.md"
 seed "DECISIONS.md"  "$DEST/DECISIONS.md"
 seed "CLIENT_LOG.md" "$DEST/CLIENT_LOG.md"
 
-echo "Created project workspace: projects/$SLUG"
+# Each client project is its OWN private repo from the start (independent of the public Jazz repo,
+# which gitignores projects/*). This makes handoff a simple transfer. Best-effort — never abort the
+# scaffold on a git/gh hiccup. Opt out of the remote with JAZZ_NO_REMOTE=1 (local repo only).
+(
+  set +e
+  cd "$DEST" || exit 0
+  printf '%s\n' 'node_modules/' '.next/' 'out/' 'dist/' '.vercel' '.env' '.env*.local' '.DS_Store' > .gitignore
+  git init -q
+  if [ -z "$(git config user.email 2>/dev/null || true)" ]; then
+    login="$(gh api user -q .login 2>/dev/null || echo jazz)"
+    git config user.name "$login"
+    git config user.email "$login@users.noreply.github.com"
+  fi
+  git add -A
+  git commit -qm "Init: $NAME — Jazz project workspace" >/dev/null 2>&1
+  if [ "${JAZZ_NO_REMOTE:-}" != "1" ] && command -v gh >/dev/null 2>&1; then
+    if gh repo create "$SLUG" --private --source . --remote origin --push >/dev/null 2>&1; then
+      echo "Private GitHub repo created and pushed: $SLUG"
+    else
+      echo "Note: remote not created (offline / name taken / gh not authed). Local repo is ready;"
+      echo "      create it later:  gh repo create $SLUG --private --source \"$DEST\" --remote origin --push"
+    fi
+  else
+    echo "Local repo initialized (remote skipped: JAZZ_NO_REMOTE set or gh unavailable)."
+  fi
+)
+
+echo "Created project workspace: projects/$SLUG (its own private repo)"
 echo "Next: set client_language in STATE.md, then run brief-intake (Phase 0)."
+echo "Deploy the app from projects/$SLUG/04_build (Vercel root directory = 04_build)."

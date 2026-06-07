@@ -143,12 +143,13 @@ status: approved | needs-revision | rejected
 
 ## Repos & privacy
 
-Real client projects live in `projects/<slug>/` **in your local Jazz workspace during the project,
-but are gitignored from this public repo** — only the `_example-coffee` demo is tracked here. **Never
-push client work to the public Jazz repo.** Deploy previews straight from `projects/<slug>/04_build`
-with Vercel (no GitHub repo needed). At **handoff (Phase 11)** the `devops` agent creates a
-**separate repo the client owns** (private by default) containing just the deliverable, connects
-Vercel to it, and transfers it. See the `devops` agent and `orchestration-protocol`.
+Each client project is its **own private GitHub repo, created automatically when the project starts**
+— `new-project` runs `git init` in `projects/<slug>/` and `gh repo create <slug> --private` (opt out
+with `JAZZ_NO_REMOTE=1`). It's independent of this public Jazz repo, which **gitignores `projects/*`**
+(only the `_example-coffee` demo is tracked here) — client work is never published here. Commit as
+you work; deploy previews from `projects/<slug>/04_build` (Vercel root dir = `04_build`). At
+**handoff** the repo already exists, so `devops` just **transfers** it (and Vercel + the domain) to
+the client. See the `devops` agent and `orchestration-protocol`.
 
 ## Model routing (cost control)
 

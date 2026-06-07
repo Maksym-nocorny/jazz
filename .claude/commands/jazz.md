@@ -14,5 +14,5 @@ skill.
 
 Then run the pipeline phase by phase: route one task at a time to the right specialist, run the
 Judge gate after each artifact and the client loop at each ✅ gate, and keep `STATE.md`,
-`DECISIONS.md`, and `CLIENT_LOG.md` current. Remember: client work stays out of the public Jazz repo
-(it's gitignored); the client gets their own repo at handoff.
+`DECISIONS.md`, and `CLIENT_LOG.md` current. Remember: `new-project` gives each project its own
+private repo from the start (never in the public Jazz repo); at handoff DevOps just transfers it.

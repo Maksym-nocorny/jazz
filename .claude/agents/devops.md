@@ -27,20 +27,20 @@ and any manual steps. The tester reads this to know what URL to hit.
 - If credentials/authorization are required (e.g. a Vercel login or a service API key), **stop and
   ask the PM/client** rather than guessing — surface exactly what you need.
 
-## Per-client repo (at handoff)
-During the project the client's site lives in `projects/<slug>/04_build` inside the Jazz workspace
-and is **gitignored from the public Jazz repo** — never push client work there. Deploy previews
-straight from that folder with `vercel deploy` (no GitHub repo needed).
+## Per-client repo
+Each client project is its **own private GitHub repo from the start** — `new-project` runs
+`git init` in `projects/<slug>/` and creates a private repo named `<slug>` under the account,
+independent of the public Jazz repo (which gitignores `projects/*`). Commit as you work for full
+history. Never push client work to the public Jazz repo.
 
-At **handoff (Phase 11)**, give the client their own repo:
-1. Extract the deliverable — the `04_build/` app (plus any assets the client should own) — into a
-   clean directory. Strip Jazz-internal docs unless the client asked for them.
-2. Create a **separate repo the client will own**, private by default:
-   `gh repo create <client-slug> --private --source <dir> --remote origin --push`
-   (public only if the client asks).
-3. Point Vercel at that repo (re-link the project) so future deploys come from the client's repo,
-   then transfer the Vercel project and domain to the client.
-4. Record the new repo URL, the live URL, and access notes in `06_devops/DEPLOY.md` and `STATE.md`.
+- **Vercel:** the Next.js app is in `projects/<slug>/04_build`. Deploy previews from there
+  (`vercel deploy` from that folder), or when linking the repo set **Root Directory = `04_build`**.
+- **Handoff (Phase 11):** the repo already exists, so handover is a **transfer, not a re-create** —
+  add the client as owner/collaborator (or `gh repo transfer`), hand over the Vercel project and
+  domain, and (if the client shouldn't see internal QA) prune `reviews/` and internal notes first.
+  Record the repo URL, live URL, and access notes in `06_devops/DEPLOY.md` and `STATE.md`.
+- If the scaffold skipped the remote (`JAZZ_NO_REMOTE=1` or offline), create it now:
+  `gh repo create <slug> --private --source projects/<slug> --remote origin --push`.
 
 ## Handoff
 Return to the PM: the live URL, the client's repo URL, what's connected, what secrets the client

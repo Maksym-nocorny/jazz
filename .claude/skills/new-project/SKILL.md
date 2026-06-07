@@ -18,6 +18,11 @@ bash .claude/skills/new-project/scripts/scaffold.sh acme-coffee "Acme Coffee Roa
 `<client-slug>` is lowercase, hyphenated, filesystem-safe. The script refuses to overwrite an
 existing project.
 
+The scaffold also **git-inits the project and creates a private GitHub repo** named `<slug>` under
+your account, with a first commit pushed — independent of the public Jazz repo (which gitignores
+`projects/*`). This makes handoff a simple transfer. Opt out of the remote with `JAZZ_NO_REMOTE=1`
+(keeps a local repo only; create the remote later).
+
 ## What it creates
 
 ```
@@ -28,6 +33,7 @@ projects/<slug>/
   STATE.md          seeded with slug + the phase table (all todo)
   DECISIONS.md      empty ADR log
   CLIENT_LOG.md     empty client dialogue log
+  .git/             its own private repo (remote: a private GitHub repo named <slug>)
 ```
 
 ## After scaffolding
